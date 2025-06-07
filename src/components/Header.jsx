@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import AuthContext from "../contexts/AuthContext";
 
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="navbar shadow-sm sticky  rounded-3xl container mx-auto my-2 flex justify-center items-center z-50">
+      <div className="navbar shadow-sm sticky bg-slate-200 rounded-3xl container mx-auto my-2 flex justify-center items-center z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -53,10 +53,10 @@ const Header = () => {
               ) : (
                 <>
                   <li className="btn mx-2">
-                    <Link to={"/signup"}>All product</Link>
+                    <Link to={"/allproduct"}>All product</Link>
                   </li>
                   <li className="btn mx-2">
-                    <Link to={"/signup"}>Add Product</Link>
+                    <Link to={"/addproduct"}>Add Product</Link>
                   </li>
                   <l className="btn mx-2">
                     <Link to={"/signup"}>My product</Link>
@@ -78,7 +78,7 @@ const Header = () => {
               <Link to={"/"}>Home</Link>
             </li>
             <li className="btn mx-2">
-              <Link to={"/"}>Categories</Link>
+              <NavLink to={"/"}>Categories</NavLink>
             </li>{" "}
             <li className="btn mx-2">
               <Link to={"/signup"}>Cart</Link>
@@ -99,10 +99,10 @@ const Header = () => {
             ) : (
               <>
                 <li className="btn mx-2">
-                  <Link to={"/signup"}>All product</Link>
+                  <Link to={"/allproduct"}>All product</Link>
                 </li>
                 <li className="btn mx-2">
-                  <Link to={"/signup"}>Add Product</Link>
+                  <Link to={"/addproduct"}>Add Product</Link>
                 </li>
                 <l className="btn mx-2">
                   <Link to={"/signup"}>My product</Link>

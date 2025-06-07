@@ -4,6 +4,9 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/auth/Login";
 import Signup from "../pages/auth/Signup";
 import ErroPage from "../pages/ErroPage";
+import PrivateRoute from "./PrivateRoute";
+import Addproduct from "../pages/Addproduct";
+import Allproduct from "../pages/Allproduct";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,22 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         Component: Signup,
+      },
+      {
+        path: "/addproduct",
+        element: (
+          <PrivateRoute>
+            <Addproduct></Addproduct>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/allproduct",
+        element: (
+          <PrivateRoute>
+            <Allproduct></Allproduct>
+          </PrivateRoute>
+        ),
       },
     ],
   },

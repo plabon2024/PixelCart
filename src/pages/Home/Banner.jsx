@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 const Banner = () => {
   return (
-    <div className="w-full h-[80vh]">
+    <div className="w-full lg:h-[80vh]">
       <Swiper
         rewind={true}
         navigation={true}
