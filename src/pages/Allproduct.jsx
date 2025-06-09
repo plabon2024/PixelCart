@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const Allproduct = () => {
   const [products, setProducts] = useState([]);
@@ -50,16 +51,18 @@ const Allproduct = () => {
       {viewMode === "card" ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filteredProducts.map((product) => (
-            <div
-              key={product._id}
-              className="border p-4 rounded shadow hover:shadow-lg"
-            >
-              <h3 className="text-lg font-semibold">{product.name}</h3>
-              <p>{product.description}</p>
-              <p className="text-sm text-gray-600">
-                Min Qty: {product.Minimum_selling_quantity}
-              </p>
-            </div>
+            <Link key={product._id} to={`/product/${product._id}`}>
+              <div className="border p-4 rounded shadow hover:shadow-lg">
+                <h3 className="text-lg font-semibold">{product.name}</h3>
+                <p>{product.description}</p>
+                <p className="text-sm text-gray-600">
+                  Main Qty: {product.mainquantity}
+                </p>
+                <p className="text-sm text-gray-600">
+                  Min Qty: {product.minquantity}
+                </p>
+              </div>{" "}
+            </Link>
           ))}
         </div>
       ) : (
@@ -89,4 +92,3 @@ const Allproduct = () => {
 };
 
 export default Allproduct;
-

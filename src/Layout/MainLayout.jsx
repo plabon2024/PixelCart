@@ -2,9 +2,10 @@ import React, { use } from "react";
 import Header from "../components/Header";
 import { Outlet } from "react-router";
 import AuthContext from "../contexts/AuthContext";
+import useAuth from "../hooks/useAuth";
 
 const MainLayout = () => {
-  const { loading } = use(AuthContext);
+  const { loading } = useAuth();
   return (
     <>
       <Header></Header>
@@ -15,8 +16,6 @@ const MainLayout = () => {
       ) : (
         <>
           <Outlet></Outlet>
-
-    
         </>
       )}
     </>

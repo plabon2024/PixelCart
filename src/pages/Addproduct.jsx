@@ -9,18 +9,20 @@ const Addproduct = () => {
     const formData = new FormData(form);
 
     const product = Object.fromEntries(formData.entries());
-
-axios
-  .post(`${import.meta.env.VITE_baseurl}/addproduct`, product)
-  .then((res) => {
-    alert("Product added successfully!");
-    // form.reset();
-  })
-  .catch((err) => {
-    alert("Something went wrong. Try again.");
-    console.error(err);
-  });
-
+    product.mainquantity = parseInt(product.mainquantity);
+    product.minquantity = parseInt(product.minquantity);
+    product.price = parseInt(product.price);
+    product.rating = parseInt(product.rating);
+    axios
+      .post(`${import.meta.env.VITE_baseurl}/addproduct`, product)
+      .then((res) => {
+        alert("Product added successfully!");
+        // form.reset();
+      })
+      .catch((err) => {
+        alert("Something went wrong. Try again.");
+        console.error(err);
+      });
   };
   return (
     <div>
