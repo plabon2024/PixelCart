@@ -59,7 +59,7 @@ const Header = () => {
                     <Link to={"/addproduct"}>Add Product</Link>
                   </li>
                   <li className="btn mx-2">
-                    <Link to={"/signup"}>My product</Link>
+                    <Link to={"/myproduct"}>My product</Link>
                   </li>
                 </>
               )}
@@ -105,7 +105,7 @@ const Header = () => {
                   <Link to={"/addproduct"}>Add Product</Link>
                 </li>
                 <li className="btn mx-2">
-                  <Link to={"/signup"}>My product</Link>
+                  <Link to={"/myproduct"}>My product</Link>
                 </li>
               </>
             )}

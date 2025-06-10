@@ -1,8 +1,10 @@
 import axios from "axios";
 import React from "react";
 import { MdDelete } from "react-icons/md";
+import useAuth from "../hooks/useAuth";
 
 const Addproduct = () => {
+  const {user}=useAuth()
   const handleAddGardener = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +15,7 @@ const Addproduct = () => {
     product.minquantity = parseInt(product.minquantity);
     product.price = parseInt(product.price);
     product.rating = parseInt(product.rating);
+    product.useremail = user.email
     axios
       .post(`${import.meta.env.VITE_baseurl}/addproduct`, product)
       .then((res) => {
@@ -163,12 +166,23 @@ const Addproduct = () => {
               className="w-full shadow-primary shadow focus:outline-primary rounded px-4 py-2"
             />
           </div>
-
+          <div className="mb-6 col-span-2">
+            <label htmlFor="Content" className="block mb-2 font-medium">
+              Product Content
+            </label>
+            <input
+              id="Content"
+              type="text"
+              name="Content"
+              placeholder="Enter Description"
+              className="w-full shadow-primary shadow focus:outline-primary rounded px-4 py-2"
+            />
+          </div>
           <button
             type="submit"
             className="text-xl btn btn-primary md:col-span-2 text-black border rounded p-5"
           >
-            Submit
+            Add 
           </button>
         </div>
       </form>
