@@ -32,12 +32,13 @@ const Modal = ({ product }) => {
         productId: product._id,
         buyerName: user.displayName,
         buyerEmail: user.email,
+        data: new Date().toLocaleDateString(),
         quantity,
       });
 
       await axios.patch(
         `${import.meta.env.VITE_baseurl}/products/${product._id}`,
-        { quantity }
+        { quantity:-quantity }
       );
       modal.close();
       Swal.fire("Success", "Purchase successful!", "success");
