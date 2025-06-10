@@ -64,7 +64,7 @@ const Header = () => {
                 </>
               )}
               <li className="btn mx-2">
-                <Link to={"/signup"}>Cart</Link>
+                <Link to={"/cart"}>Cart</Link>
               </li>
             </ul>
           </div>
@@ -81,7 +81,7 @@ const Header = () => {
               <NavLink to={"/"}>Categories</NavLink>
             </li>{" "}
             <li className="btn mx-2">
-              <Link to={"/signup"}>Cart</Link>
+              <Link to={"/cart"}>Cart</Link>
             </li>
             {!user ? (
               <>

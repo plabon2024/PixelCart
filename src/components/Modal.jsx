@@ -18,6 +18,14 @@ const Modal = ({ product }) => {
         text: `You must buy at least ${product.minquantity} units.`,
       });
     }
+    if (product.mainquantity < product.minquantity) {
+      modal.close();
+      return Swal.fire({
+        icon: "error",
+        title: "sorry supply is short",
+        text: `we have only  ${product.mainquantity} units.`,
+      });
+    }
 
     try {
       await axios.post(`${import.meta.env.VITE_baseurl}/order`, {
