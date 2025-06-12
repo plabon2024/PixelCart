@@ -1,11 +1,27 @@
-import axios from "axios";
-import React from "react";
-import { MdDelete } from "react-icons/md";
+import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import axios from "axios";
+import { useParams } from "react-router";
 
-const Addproduct = () => {
-  const {user}=useAuth()
-  const handleAddproduct = (e) => {
+const UpdateProduct = () => {
+  const { id } = useParams();
+  const { user } = useAuth();
+
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_baseurl}/product/${id}`)
+       .then((res) => {
+        setProduct(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
+
+
+  const updateProducts = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
@@ -15,9 +31,9 @@ const Addproduct = () => {
     product.minquantity = parseInt(product.minquantity);
     product.price = parseInt(product.price);
     product.rating = parseInt(product.rating);
-    product.useremail = user.email
+    product.useremail = user.email;
     axios
-      .post(`${import.meta.env.VITE_baseurl}/addproduct`, product)
+      .put(`${import.meta.env.VITE_baseurl}/updateproduct/${id}`, product)
       .then((res) => {
         alert("Product added successfully!");
         // form.reset();
@@ -27,10 +43,15 @@ const Addproduct = () => {
         console.error(err);
       });
   };
+if (!product) {
+  return <div>Loading product data...</div>;
+}
+
+  console.log(product);
   return (
     <div>
       <form
-        onSubmit={handleAddproduct}
+        onSubmit={updateProducts}
         className="text-left overflow-x-auto container mx-auto my-10 p-5 shadow-xl"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-neutral">
@@ -43,6 +64,7 @@ const Addproduct = () => {
               type="text"
               name="image"
               required
+              defaultValue={product.image}
               placeholder="Enter Image URL"
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             />
@@ -57,6 +79,7 @@ const Addproduct = () => {
               type="text"
               name="name"
               required
+              defaultValue={product.name}
               placeholder="Enter Product Name"
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             />
@@ -71,6 +94,7 @@ const Addproduct = () => {
               type="number"
               name="mainquantity"
               required
+              defaultValue={product.mainquantity}
               placeholder="Enter Main Quantity"
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             />
@@ -85,6 +109,7 @@ const Addproduct = () => {
               type="number"
               name="minquantity"
               required
+              defaultValue={product.minquantity}
               placeholder="Enter Minimum Selling Quantity"
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             />
@@ -99,6 +124,7 @@ const Addproduct = () => {
               type="text"
               name="brandname"
               required
+              defaultValue={product.brandname}
               placeholder="Enter Brand Name"
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             />
@@ -112,6 +138,7 @@ const Addproduct = () => {
               id="category"
               name="category"
               required
+              defaultValue={product.category}
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             >
               <option value="">Select a category</option>
@@ -119,7 +146,7 @@ const Addproduct = () => {
               <option>Home & Kitchen Appliances</option>
               <option>Fashion & Apparel</option>
               <option>Industrial Machinery & Tools</option>
-              <option>Health & Beauty</option> 
+              <option>Health & Beauty</option>
               <option>Office Supplies & Stationery</option>
             </select>
           </div>
@@ -132,6 +159,8 @@ const Addproduct = () => {
               id="description"
               type="text"
               name="description"
+              required
+              defaultValue={product.description}
               placeholder="Enter Description"
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             />
@@ -147,6 +176,8 @@ const Addproduct = () => {
               name="price"
               min="1"
               placeholder="Enter Price"
+              required
+              defaultValue={product.price}
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             />
           </div>
@@ -162,6 +193,8 @@ const Addproduct = () => {
               placeholder="Enter Rating"
               min="1"
               max="5"
+              required
+              defaultValue={product.rating}
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             />
           </div>
@@ -174,6 +207,7 @@ const Addproduct = () => {
               type="text"
               name="Content"
               placeholder="Enter Description"
+              defaultValue={product.Content}
               className="w-full shadow-black shadow focus:outline-black rounded px-4 py-2"
             />
           </div>
@@ -181,7 +215,7 @@ const Addproduct = () => {
             type="submit"
             className="text-xl btn btn-black md:col-span-2 text-black border rounded p-5"
           >
-            Add 
+            Update
           </button>
         </div>
       </form>
@@ -189,4 +223,4 @@ const Addproduct = () => {
   );
 };
 
-export default Addproduct;
+export default UpdateProduct;

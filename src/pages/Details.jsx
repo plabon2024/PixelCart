@@ -18,9 +18,9 @@ const Details = () => {
   if (!product) return <div>Loading...</div>;
 
   return (
-    <div className="h-screen items-center flex justify-center ">
+    <div className="min-h-screen items-center flex justify-center ">
       <div>
-        <div className="card bg-base-100 w-96 shadow-xl">
+        <div className="card bg-base-100 w-sm shadow-xl">
           <figure className="px-10 pt-10">
             <img src={product.image} alt="Shoes" className="rounded-xl" />
           </figure>

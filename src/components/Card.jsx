@@ -1,9 +1,9 @@
 import React from "react";
 
-const Card = ({ product }) => {
+const Card = ({ product,children  }) => {
   return (
     <>
-      <div className="card bg-base-100 w-96 shadow-sm">
+      <div className="card bg-base-100 w-sm shadow-sm p-5">
         <div className="avatar">
           <div className="w-sm rounded mx-auto">
             {" "}
@@ -24,6 +24,7 @@ const Card = ({ product }) => {
             Min Qty: {product.minquantity}
           </p>
           <p className="text-sm text-gray-600">Category: {product.category}</p>
+          {children}
         </div>
       </div>
     </>

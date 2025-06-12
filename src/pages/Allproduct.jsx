@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import Card from "../components/Card";
 
 const Allproduct = () => {
   const [products, setProducts] = useState([]);
@@ -21,12 +22,14 @@ const Allproduct = () => {
   const filteredProducts = showAvailableOnly
     ? products.filter((product) => product.minquantity > 100)
     : products;
-
+if (products.length===0) {
+  return <div className="h-screen flex justify-center items-center">Loading product data...</div>;
+}
   return (
     <div className="p-4">
       <h1 className="text-3xl font-bold text-center mb-4">All Product</h1>
 
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4 container mx-auto">
         <button
           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
           onClick={() => setShowAvailableOnly(!showAvailableOnly)}
@@ -45,29 +48,14 @@ const Allproduct = () => {
       </div>
 
       {viewMode === "card" ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="flex flex-wrap justify-center lg:justify-between mx-auto container gap-5">
           {filteredProducts.map((product) => (
-            <Link key={product._id} to={`/product/${product._id}`}>
-              <div className="border p-4 rounded shadow hover:shadow-lg">
-                <h3 className="text-lg font-semibold">{product.name}</h3>
-                <p>{product.description}</p>
-                <p className="text-sm text-gray-600">
-                  Main Qty: {product.mainquantity}
-                </p>
-                <p className="text-sm text-gray-600">
-                  Min Qty: {product.minquantity}
-                </p>
-                <p className="text-sm text-gray-600">
-                  Min Qty: {product.category}
-                </p>
-                <img
-                  src={product.image}
-                  width={100}
-                  className="object-cover"
-                  alt=""
-                />
-              </div>{" "}
-            </Link>
+            <Card product={product}>
+              {" "}
+              <Link key={product._id} to={`/upadateprocuct/${product._id}`}>
+                <button className="btn font-bold">Update</button>{" "}
+              </Link>
+            </Card>
           ))}
         </div>
       ) : (

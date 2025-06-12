@@ -45,11 +45,10 @@ const Cart = () => {
       <>
         <div className="h-screen flex justify-center items-center font-bold italic text-3xl">
           <div>
-
-          <p >Cart is Empty</p>
-        <Link to={'/allproduct'}> 
-          <button className="btn">view products</button>
-        </Link>
+            <p>Cart is Empty</p>
+            <Link to={"/allproduct"}>
+              <button className="btn">view products</button>
+            </Link>
           </div>
         </div>
       </>

@@ -12,6 +12,7 @@ import Cart from "../pages/Cart";
 import MyProduct from "../pages/MyProduct";
 import Categories from "../pages/Categories";
 import ProductCategories from "../pages/Home/ProductCategories";
+import Upadateprocuct from "../pages/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Addproduct></Addproduct>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/upadateprocuct/:id",
+        element: (
+          <PrivateRoute>
+            <Upadateprocuct></Upadateprocuct>
           </PrivateRoute>
         ),
       },
