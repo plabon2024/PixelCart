@@ -119,8 +119,7 @@ const Addproduct = () => {
               <option>Home & Kitchen Appliances</option>
               <option>Fashion & Apparel</option>
               <option>Industrial Machinery & Tools</option>
-              <option>Health & Beauty</option>
-              <option>Automotive Parts & Accessories</option>
+              <option>Health & Beauty</option> 
               <option>Office Supplies & Stationery</option>
             </select>
           </div>

@@ -8,7 +8,6 @@ const Details = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
-
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_baseurl}/product/${id}`)

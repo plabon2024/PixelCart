@@ -10,12 +10,15 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
 import AuthContext from "./AuthContext";
+import Categories from "../pages/Categories";
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+// for Categories  section
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -49,11 +52,14 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     loading,
-    user,setUser,
+    user,
+    setUser,
     createUser,
     signInUser,
     signInWithGoogle,
     signOutUser,
+    selectedCategory,
+    setSelectedCategory,
   };
 
   return <AuthContext value={authInfo}>{children}</AuthContext>;

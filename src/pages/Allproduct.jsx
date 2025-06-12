@@ -18,7 +18,6 @@ const Allproduct = () => {
       });
   }, []);
 
-  // Filtered product list
   const filteredProducts = showAvailableOnly
     ? products.filter((product) => product.minquantity > 100)
     : products;
@@ -27,7 +26,6 @@ const Allproduct = () => {
     <div className="p-4">
       <h1 className="text-3xl font-bold text-center mb-4">All Product</h1>
 
-      {/* Filter Button */}
       <div className="flex justify-between items-center mb-4">
         <button
           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
@@ -36,7 +34,6 @@ const Allproduct = () => {
           {showAvailableOnly ? "Show All Products" : "Show Available Products"}
         </button>
 
-        {/* View Toggle Dropdown */}
         <select
           className="border border-gray-300 rounded p-2"
           value={viewMode}
@@ -47,7 +44,6 @@ const Allproduct = () => {
         </select>
       </div>
 
-      {/* Conditionally Render View */}
       {viewMode === "card" ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {filteredProducts.map((product) => (
@@ -61,6 +57,15 @@ const Allproduct = () => {
                 <p className="text-sm text-gray-600">
                   Min Qty: {product.minquantity}
                 </p>
+                <p className="text-sm text-gray-600">
+                  Min Qty: {product.category}
+                </p>
+                <img
+                  src={product.image}
+                  width={100}
+                  className="object-cover"
+                  alt=""
+                />
               </div>{" "}
             </Link>
           ))}

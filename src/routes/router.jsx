@@ -10,6 +10,8 @@ import Allproduct from "../pages/Allproduct";
 import Details from "../pages/Details";
 import Cart from "../pages/Cart";
 import MyProduct from "../pages/MyProduct";
+import Categories from "../pages/Categories";
+import ProductCategories from "../pages/Home/ProductCategories";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +71,10 @@ const router = createBrowserRouter([
             <MyProduct></MyProduct>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/Categories",
+        Component: Categories,
       },
     ],
   },

@@ -3,13 +3,16 @@ import { FaFolderOpen, FaMusic, FaUtensils } from "react-icons/fa";
 import { FcElectronics } from "react-icons/fc";
 import { GiClothes, GiFruitBowl, GiWashingMachine } from "react-icons/gi";
 import { MdHealthAndSafety } from "react-icons/md";
-import { motion } from "motion/react"
+import { motion } from "motion/react";
+import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router";
 
 const ProductCategories = () => {
   const contentVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
+  const { setSelectedCategory } = useAuth();
   return (
     <div className="container mx-auto my-5 ">
       <h1 className="text-center font-bold text-3xl py-5">
@@ -18,16 +21,21 @@ const ProductCategories = () => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-center items-center">
-        <div className="card card-side bg-base-100 shadow-2xl p-10">
-          <figure>
-            <GiClothes size={60} />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Fashion & Apparel</h2>
-            <p></p>
+        <Link
+          onClick={() => setSelectedCategory("Fashion & Apparel")}
+          to={"/Categories"}
+        >
+          {" "}
+          <div className="card card-side bg-base-100 shadow-2xl p-10">
+            <figure>
+              <GiClothes size={60} />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">Fashion & Apparel</h2>
+              <p></p>
+            </div>
           </div>
-        </div>
-
+        </Link>
         <div className="card card-side bg-base-100 shadow-2xl p-10">
           <figure>
             <GiWashingMachine size={60} />
@@ -54,7 +62,6 @@ const ProductCategories = () => {
           viewport={{ once: true, amount: 0.6 }}
           transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
           variants={contentVariants}
-          
         >
           <div className="card card-side bg-base-100 shadow-2xl p-10">
             <figure>
