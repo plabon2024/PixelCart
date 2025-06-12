@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 
 import { Rating } from "@smastrom/react-rating";
-import '@smastrom/react-rating/style.css';
+import "@smastrom/react-rating/style.css";
 
 const MyProduct = () => {
   const { user } = useAuth();
@@ -53,7 +53,6 @@ const MyProduct = () => {
                 {product.rating.toFixed(2)}
               </span>
             </div>
-            <p className="text-xs text-gray-400">User: {product.useremail}</p>
           </div>
         </div>
       ))}

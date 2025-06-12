@@ -3,6 +3,7 @@ import React from 'react';
 const Faq = () => {
     return (
      <div>
+
   <section className="space-y-5 container mx-auto">
     <h1 className="text-4xl font-bold text-center">
       Frequently Asked <span className="text-primary">Questions</span>
