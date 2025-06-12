@@ -53,7 +53,6 @@ const MyProduct = () => {
                 {product.rating.toFixed(2)}
               </span>
             </div>
-            {/* ,<p className="text-yellow-500">Rating: {product.rating}★</p> */}
             <p className="text-xs text-gray-400">User: {product.useremail}</p>
           </div>
         </div>

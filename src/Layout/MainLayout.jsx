@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { Outlet } from "react-router";
 import AuthContext from "../contexts/AuthContext";
 import useAuth from "../hooks/useAuth";
+import Footer from "../components/Footer";
 
 const MainLayout = () => {
   const { loading } = useAuth();
@@ -18,6 +19,7 @@ const MainLayout = () => {
           <Outlet></Outlet>
         </>
       )}
+      <Footer></Footer>
     </>
   );
 };
