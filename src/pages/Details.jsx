@@ -24,23 +24,46 @@ const Details = () => {
           <figure className="px-10 pt-10">
             <img src={product.image} alt="Shoes" className="rounded-xl" />
           </figure>
-          <div className="card-body items-center text-start">
-            <div className="flex flex-col space-y-1">
-              <h2 className="text-xl font-bold">{product.name}</h2>
+          <div className="card-body text-start ">
+            <div className="flex flex-col space-y-1 ">
+              <h1 className="card-title text-2xl font-semibold text-primary">
+                {product.name}
+              </h1>
+
+              <p>{product.description}</p>
+
               <p className="text-gray-600 text-sm">{product.category}</p>
               <p className="text-gray-500 text-sm">By: {product.brandname}</p>
-              <p className="text-sm">{product.description}</p>
-              <p className="font-semibold text-green-600">${product.price}</p>
+
+              <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
+                <p>
+                  Main Qty:{" "}
+                  <span className="font-semibold">{product.mainquantity}</span>
+                </p>
+                <p>
+                  Min Buy Qty:{" "}
+                  <span className="font-semibold">{product.minquantity}</span>
+                </p>
+              </div>
+
+              <p className="text-lg font-bold text-green-600">
+                Price: $ {product.price}
+              </p>
+
               <div className="flex items-center">
                 <Rating
                   style={{ maxWidth: 100 }}
-                  value={product.rating}
+                  value={parseInt(product.rating)}
                   readOnly
                 />
-                <span className="ml-2 font-semibold">
-                  {product.rating.toFixed(2)}
+                <span className="ml-2 font-semibold text-yellow-600">
+                  {parseInt(product.rating).toFixed(2)}
                 </span>
-              </div>{" "}
+              </div>
+              <p>
+                More information :{" "}
+                <span className="text-gray-400">{product.Content}</span>
+              </p>
               <div className="card-actions justify-start items-start">
                 <button
                   className="btn"
@@ -48,7 +71,7 @@ const Details = () => {
                     document.getElementById("my_modal_2").showModal()
                   }
                 >
-                  Buy 
+                  Buy
                 </button>
               </div>
             </div>

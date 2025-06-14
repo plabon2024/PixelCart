@@ -52,15 +52,14 @@ const Modal = ({ product }) => {
     <dialog id="my_modal_2" className="modal z-0">
       <div className="modal-box">
         <form method="dialog">
-          {/* if there is a button in form, it will close the modal */}
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
             ✕
           </button>
         </form>
         <div className="space-y-5">
           <h3 className="font-bold text-lg">Checkout</h3>
-          <p className="text-sm">Name: {user.displayName}</p>
-          <p className="text-sm">Email: {user.email}</p>
+          <p className="text-sm">Name: {user?.displayName}</p>
+          <p className="text-sm">Email: {user?.email}</p>
 
           <div className="flex items-center gap-5">
             <button

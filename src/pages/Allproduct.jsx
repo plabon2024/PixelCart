@@ -4,9 +4,9 @@ import { Link } from "react-router";
 import Card from "../components/Card";
 
 const Allproduct = () => {
-  const [products, setProducts] = useState([]);
   const [showAvailableOnly, setShowAvailableOnly] = useState(false);
   const [viewMode, setViewMode] = useState("card");
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios

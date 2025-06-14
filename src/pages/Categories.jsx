@@ -59,9 +59,11 @@ const Categories = () => {
         {/* Cards */}
         <div className="flex flex-wrap gap-5 justify-center items-center">
           {filteredProducts.map((product) => (
-            <Link key={product._id} to={`/product/${product._id}`}>
-              <Card product={product} />
-            </Link>
+            <Card key={product._id} product={product}>
+              <Link to={`/product/${product._id}`}>
+                <button className="btn btn-ghost">Details</button>
+              </Link>
+            </Card>
           ))}
         </div>
       </div>
