@@ -1,10 +1,13 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
-
-import axios from "axios";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { useLocation, useNavigate } from "react-router";
 
 const Modal = ({ product }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
   const modal = document.getElementById("my_modal_2");
   const { user } = useAuth();
   const [quantity, setQuantity] = useState(product.minquantity || 1);
@@ -28,7 +31,7 @@ const Modal = ({ product }) => {
     }
 
     try {
-      await axios.post(`${import.meta.env.VITE_baseurl}/order`, {
+      await axiosSecure.post(`${import.meta.env.VITE_baseurl}/order`, {
         productId: product._id,
         buyerName: user.displayName,
         buyerEmail: user.email,
@@ -36,12 +39,16 @@ const Modal = ({ product }) => {
         quantity,
       });
 
-      await axios.patch(
-        `${import.meta.env.VITE_baseurl}/products/${product._id}`,
-        { quantity:-quantity }
-      );
-      modal.close();
-      Swal.fire("Success", "Purchase successful!", "success");
+      await axiosSecure
+        .patch(`${import.meta.env.VITE_baseurl}/products/${product._id}`, {
+          quantity: -quantity,
+        })
+
+        .then(() => {
+          modal.close();
+          Swal.fire("Success", "Purchase successful!", "success");
+          navigate(`${location.state ? location.state : "/cart"}`);
+        });
     } catch (err) {
       modal.close();
       Swal.fire("Error", err.message, "error");

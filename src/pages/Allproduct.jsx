@@ -2,14 +2,17 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import Card from "../components/Card";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Allproduct = () => {
+  const axiosSecure = useAxiosSecure();
+
   const [showAvailableOnly, setShowAvailableOnly] = useState(false);
   const [viewMode, setViewMode] = useState("card");
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios
+    axiosSecure
       .get(`${import.meta.env.VITE_baseurl}/allproduct`)
       .then((res) => {
         setProducts(res.data);
@@ -17,14 +20,18 @@ const Allproduct = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [axiosSecure]);
 
   const filteredProducts = showAvailableOnly
     ? products.filter((product) => product.minquantity > 100)
     : products;
-if (products.length===0) {
-  return <div className="h-screen flex justify-center items-center">Loading product data...</div>;
-}
+  if (products.length === 0) {
+    return (
+      <div className="h-screen flex justify-center items-center">
+        Loading product data...
+      </div>
+    );
+  }
   return (
     <div className="p-4">
       <h1 className="text-3xl font-bold text-center mb-4">All Product</h1>
@@ -48,7 +55,7 @@ if (products.length===0) {
       </div>
 
       {viewMode === "card" ? (
-        <div className="flex flex-wrap justify-center lg:justify-between mx-auto container gap-5">
+        <div className="flex flex-wrap justify-center items-center mx-auto container gap-5">
           {filteredProducts.map((product) => (
             <Card product={product}>
               {" "}
@@ -59,26 +66,62 @@ if (products.length===0) {
           ))}
         </div>
       ) : (
-        <table className="w-full border border-collapse mt-4">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="border p-2">Name</th>
-              <th className="border p-2">Description</th>
-              <th className="border p-2">Minimum Qty</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredProducts.map((product) => (
-              <tr key={product._id} className="hover:bg-gray-50">
-                <td className="border p-2">{product.name}</td>
-                <td className="border p-2">{product.description}</td>
-                <td className="border p-2">
-                  {product.Minimum_selling_quantity}
-                </td>
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>#</th>
+                <th></th>
+                <th>Price </th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {filteredProducts.map((product) => (
+                <tr>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img
+                            src={product.image}
+                            alt="Avatar Tailwind CSS Component"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-bold">{product.name}</div>
+                        <div className="text-sm opacity-50">
+                          {product.description}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    {product.brandname}
+                    <br />
+                    <span className="badge badge-ghost badge-sm">
+                      {product.category}
+                    </span>
+                  </td>
+                  <td>${product.price}</td>
+                  <th>
+                    <Link
+                      key={product._id}
+                      to={`/upadateprocuct/${product._id}`}
+                    >
+                      <button className="btn font-bold  btn-ghost btn-xs">
+                        Update
+                      </button>{" "}
+                    </Link>
+                  </th>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

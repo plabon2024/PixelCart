@@ -31,57 +31,56 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-md dropdown-content  bg-base-100 rounded-box  mt-3 w-52 p-2 shadow"
             >
-             <li>
-  <NavLink className="btn mx-2" to={"/"}>
-    Home
-  </NavLink>
-</li>
+              <li>
+                <NavLink className="btn mx-2" to={"/"}>
+                  Home
+                </NavLink>
+              </li>
 
-<li>
-  <NavLink className="btn mx-2" to={"/categories"}>
-    Categories
-  </NavLink>
-</li>
+              <li>
+                <NavLink className="btn mx-2" to={"/categories"}>
+                  Categories
+                </NavLink>
+              </li>
 
-{!user ? (
-  <>
-    <li>
-      <NavLink className="btn mx-2" to={"/login"}>
-        Login
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="btn mx-2" to={"/signup"}>
-        Sign Up
-      </NavLink>
-    </li>
-  </>
-) : (
-  <>
-    <li>
-      <NavLink className="btn mx-2" to={"/allproduct"}>
-        All Product
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="btn mx-2" to={"/addproduct"}>
-        Add Product
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="btn mx-2" to={"/myproduct"}>
-        My Product
-      </NavLink>
-    </li>
-  </>
-)}
+              {!user ? (
+                <>
+                  <li>
+                    <NavLink className="btn mx-2" to={"/login"}>
+                      Login
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="btn mx-2" to={"/signup"}>
+                      Sign Up
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <NavLink className="btn mx-2" to={"/allproduct"}>
+                      All Product
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="btn mx-2" to={"/addproduct"}>
+                      Add Product
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className="btn mx-2" to={"/myproduct"}>
+                      My Product
+                    </NavLink>
+                  </li>
+                </>
+              )}
 
-<li>
-  <NavLink className="btn mx-2" to={"/cart"}>
-    Cart
-  </NavLink>
-</li>
-
+              <li>
+                <NavLink className="btn mx-2" to={"/cart"}>
+                  Cart
+                </NavLink>
+              </li>
             </ul>
           </div>
           <a className="font-bold font-serif pl-5 text-xl">
@@ -90,57 +89,56 @@ const Header = () => {
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1">
-          <li>
-  <NavLink className="btn mx-2" to={"/"}>
-    Home
-  </NavLink>
-</li>
+            <li>
+              <NavLink className="btn mx-2" to={"/"}>
+                Home
+              </NavLink>
+            </li>
 
-<li>
-  <NavLink className="btn mx-2" to={"/categories"}>
-    Categories
-  </NavLink>
-</li>
+            <li>
+              <NavLink className="btn mx-2" to={"/categories"}>
+                Categories
+              </NavLink>
+            </li>
 
-<li>
-  <NavLink className="btn mx-2" to={"/cart"}>
-    Cart
-  </NavLink>
-</li>
+            <li>
+              <NavLink className="btn mx-2" to={"/cart"}>
+                Cart
+              </NavLink>
+            </li>
 
-{!user ? (
-  <>
-    <li>
-      <NavLink className="btn mx-2" to={"/login"}>
-        Login
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="btn mx-2" to={"/signup"}>
-        Sign Up
-      </NavLink>
-    </li>
-  </>
-) : (
-  <>
-    <li>
-      <NavLink className="btn mx-2" to={"/allproduct"}>
-        All Product
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="btn mx-2" to={"/addproduct"}>
-        Add Product
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="btn mx-2" to={"/myproduct"}>
-        My Product
-      </NavLink>
-    </li>
-  </>
-)}
-
+            {!user ? (
+              <>
+                <li>
+                  <NavLink className="btn mx-2" to={"/login"}>
+                    Login
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="btn mx-2" to={"/signup"}>
+                    Sign Up
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <NavLink className="btn mx-2" to={"/allproduct"}>
+                    All Product
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="btn mx-2" to={"/addproduct"}>
+                    Add Product
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className="btn mx-2" to={"/myproduct"}>
+                    My Product
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="navbar-end mr-3">

@@ -9,9 +9,9 @@ const SomePorduct = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_baseurl}/allproduct`)
+      .get(`${import.meta.env.VITE_baseurl}/topproduct`)
       .then((res) => {
-        setProducts(res.data.slice(0, 6));
+        setProducts(res.data);
       })
       .catch((error) => {
         console.log(error);

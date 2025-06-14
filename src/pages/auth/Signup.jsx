@@ -9,6 +9,7 @@ import { FaEye } from "react-icons/fa6";
 import AuthContext from "../../contexts/AuthContext";
 import { auth } from "../../firebase/firebase.init";
 import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Signup = () => {
   const location = useLocation();
@@ -63,13 +64,19 @@ const Signup = () => {
           })
           .catch(() => {
             setUser(user);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Signup  successful !",
+              showConfirmButton: false,
+              timer: 1000,
+            });
           });
       })
       .catch(() => {});
   };
 
-
-    useEffect(() => {
+  useEffect(() => {
     if (user && user.email) {
       navigate(location.state ? location.state : "/");
     }
@@ -250,7 +257,6 @@ const Signup = () => {
               Login with Google
             </button>
           </div>{" "}
-   
         </div>
       </div>
     </div>

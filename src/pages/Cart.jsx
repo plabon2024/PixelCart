@@ -4,15 +4,17 @@ import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Cart = () => {
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     if (!user?.email) return;
 
-    axios
+    axiosSecure
       .get(`${import.meta.env.VITE_baseurl}/orders/${user.email}`)
       .then((res) => {
         setOrders(res.data);
@@ -20,22 +22,29 @@ const Cart = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [user.email]);
+  }, [user.email, axiosSecure]);
 
   const handleCancel = async (id, quantity, productId) => {
     try {
       // Delete the order
-      await axios.delete(`${import.meta.env.VITE_baseurl}/order/${id}`);
+      await axiosSecure.delete(`${import.meta.env.VITE_baseurl}/order/${id}`);
       setOrders((prevOrders) => prevOrders.filter((order) => order._id !== id));
 
       // Update the product quantity
-      await axios.patch(
+      await axiosSecure.patch(
         `${import.meta.env.VITE_baseurl}/products/${productId}`,
         { quantity }
       );
 
       // Show success message
-      Swal.fire("Success", "Order cancelled !", "success");
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Order canceled",
+        showConfirmButton: false,
+        timer: 1000,
+      });
     } catch (err) {
       Swal.fire("Error", err.message, "error");
     }
@@ -56,7 +65,7 @@ const Cart = () => {
   }
 
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -64,7 +73,7 @@ const Cart = () => {
             <tr>
               <th>#</th>
               <th>Ordered</th>
-              <th>Ordered Date</th>
+              <th>Order Date</th>
             </tr>
           </thead>
           <tbody>

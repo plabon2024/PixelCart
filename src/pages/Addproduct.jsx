@@ -2,9 +2,13 @@ import axios from "axios";
 import React from "react";
 import { MdDelete } from "react-icons/md";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const Addproduct = () => {
-  const {user}=useAuth()
+  const axiosSecure = useAxiosSecure();
+
+  const { user } = useAuth();
   const handleAddproduct = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,12 +19,18 @@ const Addproduct = () => {
     product.minquantity = parseInt(product.minquantity);
     product.price = parseInt(product.price);
     product.rating = parseInt(product.rating);
-    product.useremail = user.email
-    axios
+    product.useremail = user.email;
+    axiosSecure
       .post(`${import.meta.env.VITE_baseurl}/addproduct`, product)
       .then((res) => {
-        alert("Product added successfully!");
-        // form.reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Product added successfully!",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+        form.reset();
       })
       .catch((err) => {
         alert("Something went wrong. Try again.");
@@ -119,7 +129,7 @@ const Addproduct = () => {
               <option>Home & Kitchen Appliances</option>
               <option>Fashion & Apparel</option>
               <option>Industrial Machinery & Tools</option>
-              <option>Health & Beauty</option> 
+              <option>Health & Beauty</option>
               <option>Office Supplies & Stationery</option>
             </select>
           </div>
@@ -181,7 +191,7 @@ const Addproduct = () => {
             type="submit"
             className="text-xl btn btn-black md:col-span-2 text-black border rounded p-5"
           >
-            Add 
+            Add
           </button>
         </div>
       </form>

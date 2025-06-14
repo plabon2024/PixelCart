@@ -1,13 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ProductCard = ({ productId }) => {
+    const axiosSecure = useAxiosSecure();
+
   const [product, setProduct] = useState(null);
   useEffect(() => {
-    axios
+    axiosSecure
       .get(`${import.meta.env.VITE_baseurl}/product/${productId}`)
       .then((res) => setProduct(res.data));
-  }, [productId]);
+  }, [productId,axiosSecure]);
   console.log(product);
   if (!product) return <div>Loading...</div>;
   return (

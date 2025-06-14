@@ -4,13 +4,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import useAuth from "../hooks/useAuth";
 import Card from "../components/Card";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Categories = () => {
+  const axiosSecure = useAxiosSecure();
   const [products, setProducts] = useState([]);
   const { selectedCategory, setSelectedCategory } = useAuth();
 
   useEffect(() => {
-    axios
+    axiosSecure
       .get(`${import.meta.env.VITE_baseurl}/allproduct`)
       .then((res) => {
         setProducts(res.data);
@@ -18,7 +20,7 @@ const Categories = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [axiosSecure]);
   if (products.length === 0) {
     return (
       <div className="h-screen flex justify-center items-center">
@@ -33,8 +35,14 @@ const Categories = () => {
   return (
     <div className="p-4">
       <h1 className="text-3xl font-bold text-center mb-4">
-        {selectedCategory}{" "}
+        {selectedCategory === ""
+          ? "Select From Our categories"
+          : `${selectedCategory}`}
       </h1>
+          {selectedCategory === ""
+          ? <p className="text-center my-2">Now showing all Product</p>
+          : ``}
+      
 
       <div className="flex flex-col justify-center items-center container mx-auto">
         {/* Category Selector */}
@@ -46,7 +54,7 @@ const Categories = () => {
             onChange={(e) => setSelectedCategory(e.target.value)}
             className="w-72 shadow-primary shadow focus:outline-primary rounded px-4 py-2"
           >
-            <option value="">Select a category</option>
+            <option value="">All</option>
             <option>Electronics & Gadgets</option>
             <option>Home & Kitchen Appliances</option>
             <option>Fashion & Apparel</option>

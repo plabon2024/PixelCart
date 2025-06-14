@@ -83,7 +83,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/Categories",
-        Component: Categories,
+        element:<PrivateRoute>
+          <Categories></Categories>
+        </PrivateRoute>
       },
     ],
   },

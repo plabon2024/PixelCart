@@ -1,9 +1,10 @@
-import React, { use, useEffect } from "react";
+import React, {  useEffect } from "react";
 import Header from "../components/Header";
 import { Outlet } from "react-router";
-import AuthContext from "../contexts/AuthContext";
+
 import useAuth from "../hooks/useAuth";
 import Footer from "../components/Footer";
+import PageTitle from "../components/PageTitle";
 
 const MainLayout = () => {
   const { loading } = useAuth();
@@ -14,6 +15,7 @@ const MainLayout = () => {
   return (
     <>
       <Header></Header>
+      <PageTitle></PageTitle>
       {loading ? (
         <div className="min-h-screen flex justify-center items-center">
           <span className="loading loading-spinner loading-xl"></span>

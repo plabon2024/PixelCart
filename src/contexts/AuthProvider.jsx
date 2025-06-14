@@ -11,13 +11,14 @@ import {
 import { auth } from "../firebase/firebase.init";
 import AuthContext from "./AuthContext";
 import Categories from "../pages/Categories";
+import Swal from "sweetalert2";
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-// for Categories  section
+  // for Categories  section
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const createUser = (email, password) => {
@@ -35,10 +36,26 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
-  const signOutUser = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
+const signOutUser = () => {
+  setLoading(true);
+
+  signOut(auth)
+    .then(() => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Logout successful!",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      setLoading(false);  
+    })
+    .catch((error) => {
+      console.error("Sign out error:", error);
+      setLoading(false);
+    });
+};
+
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {

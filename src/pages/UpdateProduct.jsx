@@ -2,24 +2,26 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import { useParams } from "react-router";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const UpdateProduct = () => {
   const { id } = useParams();
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_baseurl}/product/${id}`)
-       .then((res) => {
+    axiosSecure
+      .get(`/product/${id}`)
+      .then((res) => {
         setProduct(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [id]);
-
+  }, [id, axiosSecure]);
 
   const updateProducts = (e) => {
     e.preventDefault();
@@ -32,20 +34,32 @@ const UpdateProduct = () => {
     product.price = parseInt(product.price);
     product.rating = parseInt(product.rating);
     product.useremail = user.email;
-    axios
-      .put(`${import.meta.env.VITE_baseurl}/updateproduct/${id}`, product)
+    axiosSecure
+      .put(`/updateproduct/${id}`, product)
       .then((res) => {
-        alert("Product added successfully!");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Product Updated successfully!",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+
         // form.reset();
       })
       .catch((err) => {
-        alert("Something went wrong. Try again.");
-        console.error(err);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Something went wrong !",
+          showConfirmButton: false,
+          timer: 1000,
+        });
       });
   };
-if (!product) {
-  return <div>Loading product data...</div>;
-}
+  if (!product) {
+    return <div>Loading product data...</div>;
+  }
 
   console.log(product);
   return (

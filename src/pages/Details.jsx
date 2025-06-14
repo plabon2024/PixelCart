@@ -4,16 +4,19 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Modal from "../components/Modal";
 import { Rating } from "@smastrom/react-rating";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Details = () => {
+  const axiosSecure = useAxiosSecure();
+
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    axios
+    axiosSecure
       .get(`${import.meta.env.VITE_baseurl}/product/${id}`)
       .then((res) => setProduct(res.data));
-  }, [id]);
+  }, [id,axiosSecure]);
 
   if (!product) return <div>Loading...</div>;
 

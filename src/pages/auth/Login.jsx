@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import AuthContext from "../../contexts/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const location = useLocation();
@@ -13,6 +14,13 @@ const Login = () => {
     signInWithGoogle()
       .then(() => {
         navigate(`${location.state ? location.state : "/"}`);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login successful !",
+          showConfirmButton: false,
+          timer: 1000,
+        });
       })
       .catch(() => {});
   };
@@ -23,10 +31,24 @@ const Login = () => {
 
     signInUser(email, password)
       .then(() => {
-        console.log("success");
         navigate(`${location.state ? location.state : "/"}`);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login successful !",
+          showConfirmButton: false,
+          timer: 1000,
+        });
       })
-      .catch(() => {});
+      .catch(() => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Something went wrong !",
+          showConfirmButton: false,
+          timer: 1000,
+        });
+      });
   };
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisibility = () => {
