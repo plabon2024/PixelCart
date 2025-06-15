@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -8,13 +8,14 @@ const Modal = ({ product }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
-  const modal = document.getElementById("my_modal_2");
+  // const modal = document.getElementById("my_modal_2");
+  const modalRef = useRef(null);
   const { user } = useAuth();
   const [quantity, setQuantity] = useState(product.minquantity || 1);
 
   const handleBuy = async () => {
     if (quantity < product.minquantity) {
-      modal.close();
+      modalRef.current?.close();
       return Swal.fire({
         icon: "error",
         title: "Minimum quantity not met",
@@ -22,7 +23,7 @@ const Modal = ({ product }) => {
       });
     }
     if (product.mainquantity < product.minquantity) {
-      modal.close();
+      modalRef.current?.close();
       return Swal.fire({
         icon: "error",
         title: "sorry supply is short",
@@ -41,25 +42,18 @@ const Modal = ({ product }) => {
 
       await axiosSecure.patch(
         `${import.meta.env.VITE_baseurl}/products/${product._id}`,
-        {
-          quantity: -quantity,
-        }
+        { quantity }
       );
-
-      modal?.close();
-
-      Swal.fire("Success", "Purchase successful!", "success").then(() => {
-        navigate(`${location.state ? location.state : "/cart"}`);
-      });
+      modalRef.current?.close();
+      Swal.fire("Success", "Purchase successful!", "success");
     } catch (err) {
-      const modal = document.getElementById("yourModalId");
-      modal?.close();
+      modalRef.current?.close();
       Swal.fire("Error", err.message, "error");
     }
   };
 
   return (
-    <dialog id="my_modal_2" className="modal z-0">
+    <dialog ref={modalRef} id="my_modal_2" className="modal z-0">
       <div className="modal-box">
         <form method="dialog">
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">

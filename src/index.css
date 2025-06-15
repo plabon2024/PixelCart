@@ -26,3 +26,8 @@
   border-radius: 8px;
   min-width: 300px;
 }
+
+
+a.active {
+  @apply border-none bg-slate-400;
+}

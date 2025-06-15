@@ -84,7 +84,7 @@ const Header = () => {
             </ul>
           </div>
           <a className="font-bold font-serif pl-5 text-xl uppercase">
-          Wholesale Platform
+            Wholesale Platform
           </a>
         </div>
         <div className="navbar-center hidden lg:flex ">
@@ -144,11 +144,43 @@ const Header = () => {
         <div className="navbar-end mr-3">
           <div>
             {user ? (
-              <>
-                <div className="btn mx-2" onClick={signOutUser}>
-                  Sign Out
+              <div
+                className="dropdown dropdown-left "
+                data-tooltip-id="my-tooltip"
+              >
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    <img
+                      referrerPolicy="no-referrer"
+                      alt="profilePhoto"
+                      src={
+                        user.photoURL
+                          ? user.photoURL
+                          : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                      }
+                    />
+                  </div>
                 </div>
-              </>
+
+                <div
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content  shadow w-fit"
+                >
+                  <h1 className="btn outline-none border-none    rounded-sm">
+                    {user.displayName}
+                  </h1>
+                  <h1 className="btn outline-none border-none    rounded-sm">
+                    {user.email}
+                  </h1>
+                  <button className="btn outline-none border-none    rounded-sm">
+                    <button onClick={signOutUser}>Logout</button>
+                  </button>
+                </div>
+              </div>
             ) : (
               <></>
             )}
