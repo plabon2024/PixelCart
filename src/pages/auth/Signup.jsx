@@ -15,6 +15,7 @@ const Signup = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  console.log(error)
 
   const { user, setUser, createUser, signInWithGoogle } = use(AuthContext);
 
@@ -42,10 +43,10 @@ const Signup = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    const passwordRegExp = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if (passwordRegExp.test(password) === false) {
       setError(
-        "Password must have one lowercase, one uppercase, one digit and 8 characters or longer."
+        "Password must have one lowercase, one uppercase and 6 characters or longer."
       );
       return;
     }
@@ -73,7 +74,9 @@ const Signup = () => {
             });
           });
       })
-      .catch(() => {});
+      .catch(() => {
+        setError(error.message);
+      });
   };
 
   useEffect(() => {
@@ -192,7 +195,9 @@ const Signup = () => {
                   PhotoUrl
                 </label>
               </div>
-
+              <div>
+                <p className="text-sm text-red-500">{error}</p>
+              </div>
               <div className="flex items-center justify-between">
                 {/* <label className="flex items-center text-sm text-gray-200">
             <input
@@ -215,6 +220,7 @@ const Signup = () => {
                   Already registered
                 </Link>
               </div>
+
               <button
                 className="w-full py-2 px-4 bg-slate-950  rounded-md shadow-lg text-white font-semibold transition duration-200"
                 type="submit"
