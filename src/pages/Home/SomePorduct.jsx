@@ -26,7 +26,7 @@ const SomePorduct = () => {
 
       <div className="flex flex-wrap container mx-auto justify-center items-center gap-5 mb-20">
         {products.map((product) => (
-          <div key={product._id} className="flex items-center  justify-center ">
+          <div key={product._id} className="flex items-center  justify-center hover:scale-105 transition-all ">
             <div>
               <div className="card bg-base-100 w-sm shadow-xl h-[623px]">
                 <figure className="px-10 pt-10">

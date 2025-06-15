@@ -83,8 +83,8 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <a className="font-bold font-serif pl-5 text-xl">
-            wholesale-platform
+          <a className="font-bold font-serif pl-5 text-xl uppercase">
+          Wholesale Platform
           </a>
         </div>
         <div className="navbar-center hidden lg:flex ">
@@ -146,7 +146,7 @@ const Header = () => {
             {user ? (
               <>
                 <div className="btn mx-2" onClick={signOutUser}>
-                  signout
+                  Sign Out
                 </div>
               </>
             ) : (

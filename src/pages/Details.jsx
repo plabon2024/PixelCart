@@ -16,9 +16,14 @@ const Details = () => {
     axiosSecure
       .get(`${import.meta.env.VITE_baseurl}/product/${id}`)
       .then((res) => setProduct(res.data));
-  }, [id,axiosSecure]);
+  }, [id, axiosSecure]);
 
-  if (!product) return <div>Loading...</div>;
+  if (!product)
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
 
   return (
     <div className="min-h-screen items-center flex justify-center ">

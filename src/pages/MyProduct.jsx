@@ -61,8 +61,16 @@ const MyProduct = () => {
       }
     });
   };
+  if (data.length === 0) {
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-wrap mx-auto justify-center items-center lg:justify-between container">
+    <div className="min-h-screen flex flex-wrap mx-auto justify-center items-center lg:justify-between container">
       {data.map((product) => (
         <Card key={product._id} product={product}>
           <div className=" flex justify-between">

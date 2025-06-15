@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import useAuth from "../hooks/useAuth";
@@ -23,8 +21,8 @@ const Categories = () => {
   }, [axiosSecure]);
   if (products.length === 0) {
     return (
-      <div className="h-screen flex justify-center items-center">
-        Loading product data...
+      <div className="min-h-screen flex justify-center items-center">
+        <span className="loading loading-spinner loading-xl"></span>
       </div>
     );
   }
@@ -39,10 +37,11 @@ const Categories = () => {
           ? "Select From Our categories"
           : `${selectedCategory}`}
       </h1>
-          {selectedCategory === ""
-          ? <p className="text-center my-2">Now showing all Product</p>
-          : ``}
-      
+      {selectedCategory === "" ? (
+        <p className="text-center my-2">Now showing all Product</p>
+      ) : (
+        ``
+      )}
 
       <div className="flex flex-col justify-center items-center container mx-auto">
         {/* Category Selector */}

@@ -1,12 +1,54 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# Wholesale Platform
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A modern wholesale platform web application designed to streamline buying and selling processes for wholesale products.
 
-## Expanding the ESLint configuration
+🌐 **Live URL**: [https://wholesale-platform-c73da.web.app/](https://wholesale-platform-c73da.web.app/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Purpose
+
+The Wholesale Platform allows users to browse, buy, and manage wholesale products in an intuitive and responsive interface, using modern web technologies and cloud services.
+
+---
+
+## Key Features
+
+* User Authentication with Firebase
+* Product Listing & Management
+* Product Search and Ratings
+* Responsive UI with modern design
+* Real-time Data Fetching with Axios
+* Beautiful Alerts with SweetAlert2
+
+---
+
+## Npm packages
+
+| Package                  | Version  | Purpose                          |
+| ------------------------ | -------- | -------------------------------- |
+| `react`                  | ^19.1.0  | Frontend UI library              |
+| `react-dom`              | ^19.1.0  | React DOM rendering              |
+| `react-router`           | ^7.6.1   | Routing for React                |
+| `axios`                  | ^1.9.0   | HTTP requests                    |
+| `firebase`               | ^11.8.1  | Backend services (auth, hosting) |
+| `@smastrom/react-rating` | ^1.5.0   | Star rating component            |
+| `sweetalert2`            | ^11.6.13 | Alerts and modals                |
+| `tailwindcss`            | ^4.1.8   | CSS framework                    |
+| `daisyui`                | ^5.0.43  | Tailwind components              |
+
+---
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+

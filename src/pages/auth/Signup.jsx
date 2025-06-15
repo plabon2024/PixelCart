@@ -99,7 +99,7 @@ const Signup = () => {
               <div className="relative">
                 <input
                   placeholder="john@example.com"
-                  className="peer h-10 w-full  border-b-2 border-slate-300 text-slate-400 
+                  className="peer h-10 w-full  border-b-2 border-slate-300 text-black 
             bg-transparent placeholder-transparent focus:outline-none
              focus:border-slate-600"
                   required
@@ -108,7 +108,7 @@ const Signup = () => {
                   type="text"
                 />
                 <label
-                  className="absolute left-0 -top-3.5 text-slate-300 text-sm 
+                  className="absolute left-0 -top-3.5 text-black text-sm 
             transition-all 
             peer-placeholder-shown:top-2 peer-focus:-top-4.5
              peer-focus:text-slate-400 
@@ -121,7 +121,7 @@ const Signup = () => {
               <div className="relative">
                 <input
                   placeholder="john@example.com"
-                  className="peer h-10 w-full  border-b-2 border-slate-300 text-slate-400 
+                  className="peer h-10 w-full  border-b-2 border-slate-300 text-black 
             bg-transparent placeholder-transparent focus:outline-none
              focus:border-slate-600"
                   required
@@ -130,7 +130,7 @@ const Signup = () => {
                   type="email"
                 />
                 <label
-                  className="absolute left-0 -top-3.5 text-slate-300 text-sm 
+                  className="absolute left-0 -top-3.5 text-black text-sm 
             transition-all 
             peer-placeholder-shown:top-2 peer-focus:-top-4.5
              peer-focus:text-slate-400 
@@ -146,25 +146,25 @@ const Signup = () => {
                   placeholder="Password"
                   className="peer h-10 w-full  border-b-2 border-slate-300 text-black 
             bg-transparent placeholder-transparent focus:outline-none
-             focus:border-slate-600"
+             focus:border-black"
                   required
                   id="password"
                   name="password"
                   type={passwordShown ? "text" : "password"}
                 />
                 <label
-                  className="absolute  left-0 -top-3.5 text-slate-400 text-sm 
+                  className="absolute  left-0 -top-3.5 text-black text-sm 
             transition-all 
             peer-placeholder-shown:top-2 peer-focus:-top-4.5
-             peer-focus:text-slate-400 
-            peer-focus:text-base"
+             peer-focus:text-black
+            "
                   htmlFor="password"
                 >
                   Password
                 </label>
 
                 <div
-                  className="absolute right-3 top-2.5 cursor-pointer text-xl text-gray-600"
+                  className="absolute right-3 top-2.5 cursor-pointer text-xl text-black"
                   onClick={togglePasswordVisibility}
                 >
                   {passwordShown ? <FaEyeSlash /> : <FaEye />}
@@ -174,19 +174,19 @@ const Signup = () => {
               <div className="relative">
                 <input
                   placeholder="Url"
-                  className="peer h-10 w-full  border-b-2 border-slate-300 text-slate-400 
+                  className="peer h-10 w-full  border-b-2 border-slate-300 text-black 
             bg-transparent placeholder-transparent focus:outline-none
-             focus:border-slate-600"
+             focus:border-black"
                   id="photo"
                   name="photo"
                   type="text"
                 />
                 <label
-                  className="absolute left-0 -top-3.5 text-slate-300 text-sm 
+                  className="absolute left-0 -top-3.5 text-black text-sm 
             transition-all 
             peer-placeholder-shown:top-2 peer-focus:-top-4.5
-             peer-focus:text-slate-400 
-            peer-focus:text-base"
+            
+            peer-focus:text-black"
                   htmlFor="photo"
                 >
                   PhotoUrl
@@ -212,14 +212,14 @@ const Signup = () => {
                   className="text-sm text-blue-300 hover:underline"
                   href="#"
                 >
-                  Create Account
+                  Already registered
                 </Link>
               </div>
               <button
                 className="w-full py-2 px-4 bg-slate-950  rounded-md shadow-lg text-white font-semibold transition duration-200"
                 type="submit"
               >
-                Sign In
+                Sign Up
               </button>
             </form>
 
@@ -254,7 +254,7 @@ const Signup = () => {
                   ></path>
                 </g>
               </svg>
-              Login with Google
+              Continue with Google
             </button>
           </div>{" "}
         </div>

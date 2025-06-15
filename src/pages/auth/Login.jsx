@@ -80,7 +80,7 @@ const Login = () => {
                 <div className="relative">
                   <input
                     placeholder="john@example.com"
-                    className="peer h-10 w-full  border-b-2 border-slate-300 text-slate-400 
+                    className="peer h-10 w-full  border-b-2 border-slate-300 text-black
             bg-transparent placeholder-transparent focus:outline-none
              focus:border-slate-600"
                     required
@@ -89,10 +89,10 @@ const Login = () => {
                     type="email"
                   />
                   <label
-                    className="absolute left-0 -top-3.5 text-slate-300 text-sm 
+                    className="absolute left-0 -top-3.5 text-black text-sm 
             transition-all 
             peer-placeholder-shown:top-2 peer-focus:-top-4.5
-             peer-focus:text-slate-400 
+             peer-focus:text-black
             peer-focus:text-base"
                     htmlFor="email"
                   >
@@ -112,10 +112,10 @@ const Login = () => {
                     type={passwordShown ? "text" : "password"}
                   />
                   <label
-                    className="absolute  left-0 -top-3.5 text-slate-400 text-sm 
+                    className="absolute  left-0 -top-3.5 text-black text-sm 
             transition-all 
             peer-placeholder-shown:top-2 peer-focus:-top-4.5
-             peer-focus:text-slate-400 
+             peer-focus:text-black 
             peer-focus:text-base"
                     htmlFor="password"
                   >

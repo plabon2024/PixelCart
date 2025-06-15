@@ -58,7 +58,9 @@ const UpdateProduct = () => {
       });
   };
   if (!product) {
-    return <div>Loading product data...</div>;
+    return  <div className="min-h-screen flex justify-center items-center">
+          <span className="loading loading-spinner loading-xl"></span>
+        </div>;
   }
 
   console.log(product);

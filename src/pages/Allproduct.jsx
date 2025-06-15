@@ -27,9 +27,9 @@ const Allproduct = () => {
     : products;
   if (products.length === 0) {
     return (
-      <div className="h-screen flex justify-center items-center">
-        Loading product data...
-      </div>
+     <div className="min-h-screen flex justify-center items-center">
+          <span className="loading loading-spinner loading-xl"></span>
+        </div>
     );
   }
   return (
