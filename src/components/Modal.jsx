@@ -39,18 +39,21 @@ const Modal = ({ product }) => {
         quantity,
       });
 
-      await axiosSecure
-        .patch(`${import.meta.env.VITE_baseurl}/products/${product._id}`, {
+      await axiosSecure.patch(
+        `${import.meta.env.VITE_baseurl}/products/${product._id}`,
+        {
           quantity: -quantity,
-        })
+        }
+      );
 
-        .then(() => {
-          modal.close();
-          Swal.fire("Success", "Purchase successful!", "success");
-          navigate(`${location.state ? location.state : "/cart"}`);
-        });
+      modal?.close();
+
+      Swal.fire("Success", "Purchase successful!", "success").then(() => {
+        navigate(`${location.state ? location.state : "/cart"}`);
+      });
     } catch (err) {
-      modal.close();
+      const modal = document.getElementById("yourModalId");
+      modal?.close();
       Swal.fire("Error", err.message, "error");
     }
   };

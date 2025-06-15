@@ -15,7 +15,6 @@ const Signup = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  console.log(error)
 
   const { user, setUser, createUser, signInWithGoogle } = use(AuthContext);
 
@@ -43,7 +42,7 @@ const Signup = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if (passwordRegExp.test(password) === false) {
       setError(
         "Password must have one lowercase, one uppercase and 6 characters or longer."

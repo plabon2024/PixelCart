@@ -13,7 +13,7 @@ const MyProduct = () => {
   const axiosSecure = useAxiosSecure();
 
   const { user } = useAuth();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   useEffect(() => {
     axiosSecure
       .get(`${import.meta.env.VITE_baseurl}/products/${user.email}`)
@@ -61,14 +61,26 @@ const MyProduct = () => {
       }
     });
   };
-  if (data.length === 0) {
+
+  if (!data) {
     return (
       <div className="min-h-screen flex justify-center items-center">
         <span className="loading loading-spinner loading-xl"></span>
       </div>
     );
   }
-
+  if (data.length === 0) {
+    return (
+      <div className="h-screen flex justify-center items-center font-bold italic text-3xl">
+        <div>
+          <p>No Product Found !</p>
+          <Link to={"/addproduct"}>
+            <button className="btn">Add products</button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen flex flex-wrap mx-auto justify-center items-center lg:justify-between container">
       {data.map((product) => (
