@@ -33,7 +33,7 @@ const MyProduct = () => {
       confirmButtonText: "Delete",
       denyButtonText: `Cancel`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
+   
       if (result.isConfirmed) {
         axiosSecure
           .delete(`${import.meta.env.VITE_baseurl}/product/${id}`)
@@ -82,7 +82,7 @@ const MyProduct = () => {
     );
   }
   return (
-    <div className="min-h-screen flex flex-wrap mx-auto justify-center items-center lg:justify-between container">
+    <div className="min-h-screen flex flex-wrap mx-auto justify-center items-center  container gap-5">
       {data.map((product) => (
         <Card key={product._id} product={product}>
           <div className=" flex justify-between">

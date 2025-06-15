@@ -31,54 +31,52 @@ const Modal = ({ product }) => {
       });
     }
 
-  //   try {
-  //     await axiosSecure.post(`${import.meta.env.VITE_baseurl}/order`, {
-  //       productId: product._id,
-  //       buyerName: user.displayName,
-  //       buyerEmail: user.email,
-  //       data: new Date().toLocaleDateString(),
-  //       quantity,
-  //     });
+    //   try {
+    //     await axiosSecure.post(`${import.meta.env.VITE_baseurl}/order`, {
+    //       productId: product._id,
+    //       buyerName: user.displayName,
+    //       buyerEmail: user.email,
+    //       data: new Date().toLocaleDateString(),
+    //       quantity,
+    //     });
 
-  //     await axiosSecure
-  //       .patch(`${import.meta.env.VITE_baseurl}/products/${product._id}`, {
-  //         quantity: -quantity,
-  //       })
-  //       .then(() => {
-  //         modal.close();
-  //         Swal.fire("Success", "Purchase successful!", "success");
-  //         navigate(`${location.state ? location.state : "/cart"}`);
-  //       });
-  //   } catch (err) {
-  //     Swal.fire("Error", err.message, "error");
-  //   }
-  // };
-try {
-  await axiosSecure.post(`${import.meta.env.VITE_baseurl}/order`, {
-    productId: product._id,
-    buyerName: user.displayName,
-    buyerEmail: user.email,
-    data: new Date().toLocaleDateString(),
-    quantity,
-  });
+    //     await axiosSecure
+    //       .patch(`${import.meta.env.VITE_baseurl}/products/${product._id}`, {
+    //         quantity: -quantity,
+    //       })
+    //       .then(() => {
+    //         modal.close();
+    //         Swal.fire("Success", "Purchase successful!", "success");
+    //         navigate(`${location.state ? location.state : "/cart"}`);
+    //       });
+    //   } catch (err) {
+    //     Swal.fire("Error", err.message, "error");
+    //   }
+    // };
+    try {
+      await axiosSecure.post(`${import.meta.env.VITE_baseurl}/order`, {
+        productId: product._id,
+        buyerName: user.displayName,
+        buyerEmail: user.email,
+        data: new Date().toLocaleDateString(),
+        quantity,
+      });
 
-  await axiosSecure.patch(`${import.meta.env.VITE_baseurl}/products/${product._id}`, {
-    quantity: -quantity,
-  });
+      await axiosSecure.patch(
+        `${import.meta.env.VITE_baseurl}/products/${product._id}`,
+        {
+          quantity: -quantity,
+        }
+      );
 
-  modal.close();
-  Swal.fire("Success", "Purchase successful!", "success");
-  navigate(`${location.state ? location.state : "/cart"}`);
-  
-} catch (err) {
-  modal.close();  // always close modal even on error
-  Swal.fire("Error", err.message, "error");
-}
-
-
-
-
-
+      modal.close();
+      Swal.fire("Success", "Purchase successful!", "success");
+      navigate(`${location.state ? location.state : "/cart"}`);
+    } catch (err) {
+      modal.close(); // always close modal even on error
+      Swal.fire("Error", err.message, "error");
+    }
+  };
 
   return (
     <dialog id="my_modal_2" className="modal z-0">
