@@ -176,8 +176,11 @@ const Header = () => {
                   <h1 className="btn outline-none border-none    rounded-sm">
                     {user.email}
                   </h1>
-                  <button className="btn outline-none border-none    rounded-sm">
-                    <button onClick={signOutUser}>Logout</button>
+                  <button
+                    className="btn outline-none border-none rounded-sm"
+                    onClick={signOutUser}
+                  >
+                    Logout
                   </button>
                 </div>
               </div>

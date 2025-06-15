@@ -8,9 +8,11 @@ const axiosInstance = axios.create({
 
 const useAxiosSecure = () => {
   const { user, signOutUser } = useAuth();
-
+  
   axiosInstance.interceptors.request.use((config) => {
-    config.headers.authorization = `Bearer ${user.accessToken}`;
+    if (user?.accessToken) {
+      config.headers.authorization = `Bearer ${user.accessToken}`;
+    }
     return config;
   });
 

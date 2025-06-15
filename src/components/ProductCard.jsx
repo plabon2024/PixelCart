@@ -11,17 +11,15 @@ const ProductCard = ({ productId }) => {
       .get(`${import.meta.env.VITE_baseurl}/product/${productId}`)
       .then((res) => setProduct(res.data));
   }, [productId, axiosSecure]);
-  console.log(product);
-  if (!product){
-       return(
-       <div className="flex justify-center items-center">
-      <span className="loading loading-spinner loading-xl"></span>
-    </div>
-    )
+
+  if (!product) {
+    return (
+      <div className="flex justify-center items-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
   }
- 
-  
-   
+
   return (
     <div className="flex items-center gap-3">
       <div className="avatar">

@@ -57,9 +57,9 @@ const Allproduct = () => {
       {viewMode === "card" ? (
         <div className="flex flex-wrap justify-center items-center mx-auto container gap-5">
           {filteredProducts.map((product) => (
-            <Card product={product}>
+            <Card key={product._id} product={product}>
               {" "}
-              <Link key={product._id} to={`/upadateprocuct/${product._id}`}>
+              <Link  to={`/upadateprocuct/${product._id}`}>
                 <button className="btn font-bold">Update</button>{" "}
               </Link>
             </Card>

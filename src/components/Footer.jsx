@@ -5,11 +5,11 @@ const Footer = () => {
     <div>
       <footer className="footer footer-horizontal footer-center bg-slate-200  p-10">
         <aside>
-          <p className="font-bold ">
-            <p className="uppercase text-xl font-serif">Wholesale Platform</p>
-            <br />
-            Providing reliable product since 2000
-          </p>
+         <div className="font-bold">
+  <p className="uppercase text-xl font-serif">Wholesale Platform</p>
+  <p>Providing reliable product since 2000</p>
+</div>
+
           <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
         </aside>
         <nav>
