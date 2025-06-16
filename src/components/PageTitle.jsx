@@ -25,7 +25,7 @@ const PageTitle = () => {
       document.title = `wholesale-platform-Update Product`;
     }
      else if (path.startsWith("/product/")) {
-      document.title = `wholesale-platform-Update Details`;
+      document.title = `wholesale-platform- Details`;
     }
      else {
       document.title = "Not Found Page";
