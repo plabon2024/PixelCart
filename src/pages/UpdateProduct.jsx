@@ -19,7 +19,7 @@ const UpdateProduct = () => {
         setProduct(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }, [id, axiosSecure]);
 
@@ -44,8 +44,6 @@ const UpdateProduct = () => {
           showConfirmButton: false,
           timer: 1000,
         });
-
-        // form.reset();
       })
       .catch((err) => {
         Swal.fire({
@@ -58,12 +56,14 @@ const UpdateProduct = () => {
       });
   };
   if (!product) {
-    return  <div className="min-h-screen flex justify-center items-center">
-          <span className="loading loading-spinner loading-xl"></span>
-        </div>;
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
   }
 
-  console.log(product);
+  // console.log(product);
   return (
     <div>
       <form
