@@ -33,7 +33,7 @@ const UpdateProduct = () => {
     product.minquantity = parseInt(product.minquantity);
     product.price = parseInt(product.price);
     product.rating = parseInt(product.rating);
-    product.useremail = user.email;
+    product.updatedby = user.email;
     axiosSecure
       .put(`/updateproduct/${id}`, product)
       .then((res) => {
