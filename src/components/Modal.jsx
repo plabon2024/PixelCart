@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -8,14 +8,12 @@ const Modal = ({ product }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
-  const modal = document.getElementById("my_modal_2");
-  // const modalRef = useRef(null);
+
   const { user } = useAuth();
   const [quantity, setQuantity] = useState(product.minquantity || 1);
 
   const handleBuy = async () => {
     if (quantity < product.minquantity) {
-      modal.close();
       return Swal.fire({
         icon: "error",
         title: "Minimum quantity not met",
@@ -23,7 +21,6 @@ const Modal = ({ product }) => {
       });
     }
     if (product.mainquantity < product.minquantity) {
-      modal.close();
       return Swal.fire({
         icon: "error",
         title: "sorry supply is short",
@@ -31,28 +28,6 @@ const Modal = ({ product }) => {
       });
     }
 
-    //   try {
-    //     await axiosSecure.post(`${import.meta.env.VITE_baseurl}/order`, {
-    //       productId: product._id,
-    //       buyerName: user.displayName,
-    //       buyerEmail: user.email,
-    //       data: new Date().toLocaleDateString(),
-    //       quantity,
-    //     });
-
-    //     await axiosSecure
-    //       .patch(`${import.meta.env.VITE_baseurl}/products/${product._id}`, {
-    //         quantity: -quantity,
-    //       })
-    //       .then(() => {
-    //         modal.close();
-    //         Swal.fire("Success", "Purchase successful!", "success");
-    //         navigate(`${location.state ? location.state : "/cart"}`);
-    //       });
-    //   } catch (err) {
-    //     Swal.fire("Error", err.message, "error");
-    //   }
-    // };
     try {
       await axiosSecure.post(`${import.meta.env.VITE_baseurl}/order`, {
         productId: product._id,
@@ -62,22 +37,19 @@ const Modal = ({ product }) => {
         quantity,
       });
 
-      await axiosSecure.patch(
-        `${import.meta.env.VITE_baseurl}/products/${product._id}`,
-        {
+      await axiosSecure
+        .patch(`${import.meta.env.VITE_baseurl}/products/${product._id}`, {
           quantity: -quantity,
-        }
-      );
-
-      modal.close();
-      Swal.fire("Success", "Purchase successful!", "success");
-      navigate(`${location.state ? location.state : "/cart"}`);
+        })
+        .then(() => {
+          Swal.fire("Success", "Purchase successful!", "success");
+          navigate(`${location.state ? location.state : "/cart"}`);
+        });
     } catch (err) {
-      modal.close(); // always close modal even on error
       Swal.fire("Error", err.message, "error");
     }
   };
-
+  
   return (
     <dialog id="my_modal_2" className="modal z-0">
       <div className="modal-box">

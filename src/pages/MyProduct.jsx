@@ -27,7 +27,7 @@ const MyProduct = () => {
 
   const handledelete = (id) => {
     Swal.fire({
-      title: "Do you want to Delete the changes?",
+      title: "Do you want to Delete this?",
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: "Delete",
