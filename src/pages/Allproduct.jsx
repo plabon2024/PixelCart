@@ -27,9 +27,9 @@ const Allproduct = () => {
     : products;
   if (products.length === 0) {
     return (
-     <div className="min-h-screen flex justify-center items-center">
-          <span className="loading loading-spinner loading-xl"></span>
-        </div>
+      <div className="min-h-screen flex justify-center items-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
     );
   }
   return (
@@ -55,18 +55,18 @@ const Allproduct = () => {
       </div>
 
       {viewMode === "card" ? (
-        <div className="flex flex-wrap justify-center items-center mx-auto container gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  justify-center items-center mx-auto container gap-5">
           {filteredProducts.map((product) => (
             <Card key={product._id} product={product}>
               {" "}
-              <Link  to={`/upadateprocuct/${product._id}`}>
+              <Link to={`/upadateprocuct/${product._id}`}>
                 <button className="btn font-bold">Update</button>{" "}
               </Link>
             </Card>
           ))}
         </div>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto container mx-auto">
           <table className="table">
             {/* head */}
             <thead>

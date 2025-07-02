@@ -4,7 +4,7 @@ import React from "react";
 const Card = ({ product, children }) => {
   return (
     <>
-      <div className="card bg-base-100 w-sm shadow-sm min-h-[747px] hover:scale-105 transition-all">
+      <div className="card bg-base-100 max-w-sm shadow-sm min-h-[747px] hover:scale-105 transition-all">
         <div className="avatar p-5">
           <div className="w-sm rounded mx-auto">
             <img

@@ -82,7 +82,7 @@ const MyProduct = () => {
     );
   }
   return (
-    <div className="min-h-screen flex flex-wrap mx-auto justify-center items-center  container gap-5">
+    <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  justify-center items-center mx-auto container gap-5">
       {data.map((product) => (
         <Card key={product._id} product={product}>
           <div className=" flex justify-between">

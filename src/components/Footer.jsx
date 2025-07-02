@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className="footer footer-horizontal footer-center bg-slate-200  p-10">
         <aside>
          <div className="font-bold">
-  <p className="uppercase text-xl font-serif">Wholesale Platform</p>
+  <p className="uppercase text-xl font-serif">PixelCart</p>
   <p>Providing reliable product since 2000</p>
 </div>
 

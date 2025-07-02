@@ -24,11 +24,11 @@ const SomePorduct = () => {
         Some Of Our Product
       </h1>
 
-      <div className="flex flex-wrap container mx-auto justify-center items-center gap-5 mb-20">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-center items-center mb-20">
         {products.map((product) => (
           <div key={product._id} className="flex items-center  justify-center hover:scale-105 transition-all ">
             <div>
-              <div className="card bg-base-100 w-sm shadow-xl h-[623px]">
+              <div className="card bg-base-100 max-w-sm shadow-xl h-[500px]">
                 <figure className="px-10 pt-10">
                   <img
                     src={product.image}
@@ -38,11 +38,10 @@ const SomePorduct = () => {
                 </figure>
                 <div className="card-body items-center text-start">
                   <div className="flex flex-col space-y-1">
-                    <h1 className="card-title text-2xl font-semibold text-primary">
+                    <h1 className="card-title text-2xl font-semibold ">
                       {product.name}
                     </h1>
 
-                    <p>{product.description}</p>
 
                     <p className="text-gray-600 text-sm">{product.category}</p>
                     <p className="text-gray-500 text-sm">

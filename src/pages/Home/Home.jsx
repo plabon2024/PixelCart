@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import ProductCategories from "./ProductCategories";
 import Faq from "./Faq";
 import SomePorduct from "./SomePorduct";
+import CustomerReviews from "./CustomerReviews";
 
 const Home = () => {
   useEffect(() => {
@@ -14,6 +15,7 @@ const Home = () => {
       <Banner></Banner>
       <ProductCategories></ProductCategories>
       <SomePorduct></SomePorduct>
+      <CustomerReviews></CustomerReviews>
       <Faq></Faq>
     </div>
   );

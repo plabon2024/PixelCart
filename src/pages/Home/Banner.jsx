@@ -8,7 +8,7 @@ import { Navigation } from "swiper/modules";
 import { Link } from "react-router";
 const Banner = () => {
   return (
-    <div className="w-full lg:h-[80vh]">
+    <div className="w-full lg:h-[80vh] container mx-auto">
       <Swiper
         rewind={true}
         navigation={true}

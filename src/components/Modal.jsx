@@ -49,7 +49,7 @@ const Modal = ({ product }) => {
       Swal.fire("Error", err.message, "error");
     }
   };
-  
+
   return (
     <dialog id="my_modal_2" className="modal z-0">
       <div className="modal-box">

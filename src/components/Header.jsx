@@ -7,8 +7,9 @@ const Header = () => {
 
   return (
     <>
-      <div className="navbar shadow-sm sticky bg-slate-200 rounded-3xl container mx-auto my-2 flex justify-center items-center z-50">
-        <div className="navbar-start">
+      <div className="bg-slate-200 sticky top-0 z-50" >
+        <div className="navbar   rounded-3xl container mx-auto mb-2 flex justify-center items-center " >
+            <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -84,7 +85,7 @@ const Header = () => {
             </ul>
           </div>
           <a className="font-bold font-serif pl-5 text-xl uppercase">
-            Wholesale Platform
+            PixelCart
           </a>
         </div>
         <div className="navbar-center hidden lg:flex ">
@@ -189,6 +190,8 @@ const Header = () => {
             )}
           </div>
         </div>
+        </div>
+      
       </div>
     </>
   );
