@@ -33,7 +33,7 @@ const Allproduct = () => {
     );
   }
   return (
-    <div className="p-4">
+    <div className="p-4 min-h-screen">
       <h1 className="text-3xl font-bold text-center mb-4">All Product</h1>
 
       <div className="flex justify-between items-center mb-4 container mx-auto">
@@ -93,7 +93,7 @@ const Allproduct = () => {
                       </div>
                       <div>
                         <div className="font-bold">{product.name}</div>
-                        <div className="text-sm opacity-50">
+                        <div className="text-sm opacity-50 truncate">
                           {product.description}
                         </div>
                       </div>

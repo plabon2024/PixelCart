@@ -55,7 +55,7 @@ const Cart = () => {
         <div className="h-screen flex justify-center items-center font-bold italic text-3xl">
           <div>
             <p>Cart is Empty</p>
-            <Link to={"/allproduct"}>
+            <Link to={"/categories"}>
               <button className="btn">view products</button>
             </Link>
           </div>
@@ -65,7 +65,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen container mx-auto">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
