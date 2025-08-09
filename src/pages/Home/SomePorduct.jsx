@@ -29,11 +29,11 @@ const SomePorduct = () => {
           <div key={product._id} className="flex items-center  justify-center hover:scale-105 transition-all ">
             <div>
               <div className="card bg-base-100 max-w-sm shadow-xl h-[500px]">
-                <figure>
+                <figure className="px-10 pt-10">
                   <img
                     src={product.image}
                     alt="Shoes"
-                    className="h-full w-full object-cover"
+                    className="rounded-xl h-64"
                   />
                 </figure>
                 <div className="card-body items-center text-start">
@@ -48,16 +48,23 @@ const SomePorduct = () => {
                       By: {product.brandname}
                     </p>
 
-                 
+                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
+                      <p>
+                        Min Buy Qty:{" "}
+                        <span className="font-semibold">
+                          {product.minquantity}
+                        </span>
+                      </p>
+                    </div>
 
-                    <p className="text-lg font-bold text-green-600 flex justify-between items-center">
-                      $ {product.price}<Link to={`/product/${product._id}`}>
-                        <button className="btn btn-ghost">Details</button>
-                      </Link>
+                    <p className="text-lg font-bold text-green-600">
+                      $ {product.price}
                     </p>
 
                     <div className="card-actions justify-start items-start">
-                      
+                      <Link to={`/product/${product._id}`}>
+                        <button className="btn btn-ghost">Details</button>
+                      </Link>
                     </div>
                   </div>
                 </div>
