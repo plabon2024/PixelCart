@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <>
-      <div className=" sticky top-0 z-50">
+      <div className=" sticky top-0 bg-white z-50">
         <div className="navbar   rounded-3xl container mx-auto mb-2 flex justify-center items-center ">
           <div className="navbar-start">
             <div className="dropdown">
@@ -37,13 +37,13 @@ const Header = () => {
                 className="menu menu-md dropdown-content  bg-base-100 rounded-box  mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <NavLink className="btn mx-2" to={"/"}>
+                  <NavLink className=" mx-2" to={"/"}>
                     Home
                   </NavLink>
                 </li>
 
                 <li>
-                  <NavLink className="btn mx-2" to={"/categories"}>
+                  <NavLink className=" mx-2" to={"/categories"}>
                     Categories
                   </NavLink>
                 </li>
@@ -51,12 +51,12 @@ const Header = () => {
                 {!user ? (
                   <>
                     <li>
-                      <NavLink className="btn mx-2" to={"/login"}>
+                      <NavLink className=" mx-2" to={"/login"}>
                         Login
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className="btn mx-2" to={"/signup"}>
+                      <NavLink className=" mx-2" to={"/signup"}>
                         Sign Up
                       </NavLink>
                     </li>
@@ -64,17 +64,17 @@ const Header = () => {
                 ) : (
                   <>
                     <li>
-                      <NavLink className="btn mx-2" to={"/allproduct"}>
+                      <NavLink className=" mx-2" to={"/allproduct"}>
                         All Product
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className="btn mx-2" to={"/addproduct"}>
+                      <NavLink className=" mx-2" to={"/addproduct"}>
                         Add Product
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink className="btn mx-2" to={"/myproduct"}>
+                      <NavLink className=" mx-2" to={"/myproduct"}>
                         My Product
                       </NavLink>
                     </li>
@@ -82,32 +82,32 @@ const Header = () => {
                 )}
 
                 <li>
-                  <NavLink className="btn mx-2" to={"/cart"}>
+                  <NavLink className=" mx-2" to={"/cart"}>
                     Cart
                   </NavLink>
                 </li>
               </ul>
             </div>
-            <a className="font-bold font-serif pl-5 text-xl uppercase">
+            <a className="p-1  text-2xl uppercase">
               PixelCart
             </a>
           </div>
           <div className="navbar-center hidden lg:flex ">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="menu menu-horizontal px-1 text-lg">
               <li>
-                <NavLink className="btn mx-2" to={"/"}>
+                <NavLink className=" mx-2" to={"/"}>
                   Home
                 </NavLink>
               </li>
 
               <li>
-                <NavLink className="btn mx-2" to={"/categories"}>
+                <NavLink className=" mx-2" to={"/categories"}>
                   Categories
                 </NavLink>
               </li>
 
               <li>
-                <NavLink className="btn mx-2" to={"/cart"}>
+                <NavLink className=" mx-2" to={"/cart"}>
                   Cart
                 </NavLink>
               </li>
@@ -115,12 +115,12 @@ const Header = () => {
               {!user ? (
                 <>
                   <li>
-                    <NavLink className="btn mx-2" to={"/login"}>
+                    <NavLink className=" mx-2" to={"/login"}>
                       Login
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="btn mx-2" to={"/signup"}>
+                    <NavLink className=" mx-2" to={"/signup"}>
                       Sign Up
                     </NavLink>
                   </li>
@@ -128,17 +128,17 @@ const Header = () => {
               ) : (
                 <>
                   <li>
-                    <NavLink className="btn mx-2" to={"/allproduct"}>
+                    <NavLink className=" mx-2" to={"/allproduct"}>
                       All Product
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="btn mx-2" to={"/addproduct"}>
+                    <NavLink className=" mx-2" to={"/addproduct"}>
                       Add Product
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink className="btn mx-2" to={"/myproduct"}>
+                    <NavLink className=" mx-2" to={"/myproduct"}>
                       My Product
                     </NavLink>
                   </li>

@@ -29,5 +29,5 @@
 
 
 a.active {
-  @apply border-none bg-slate-400;
+  @apply border-none bg-transparent  underline underline-offset-8;
 }
