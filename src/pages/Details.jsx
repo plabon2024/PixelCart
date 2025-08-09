@@ -119,7 +119,7 @@ const Details = () => {
             >
               Buy Now
             </button>
-            <button className="btn btn-outline flex-1">Add to Cart</button>
+            
           </div>
 
           {/* Extra Info */}

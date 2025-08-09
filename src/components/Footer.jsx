@@ -3,12 +3,12 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer footer-horizontal footer-center bg-slate-200  p-10">
+      <footer className="footer footer-horizontal footer-center  p-10">
         <aside>
-         <div className="font-bold">
-  <p className="uppercase text-xl font-serif">PixelCart</p>
-  <p>Providing reliable product since 2000</p>
-</div>
+          <div >
+            <p className="uppercase text-2xl font-light ">PixelCart</p>
+            <p>Providing reliable product since 2000</p>
+          </div>
 
           <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
         </aside>

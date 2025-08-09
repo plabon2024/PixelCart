@@ -29,7 +29,7 @@ const ProductCard = ({ productId }) => {
       </div>
       <div>
         <div className="font-bold">{product.name}</div>
-        <div className="text-sm opacity-50 w-64">{product.description}</div>
+        {/* <div className="text-sm opacity-50 w-64">{product.description}</div> */}
         <div className="text-sm opacity-50">Made by :{product.brandname}</div>
       </div>
       <div>
