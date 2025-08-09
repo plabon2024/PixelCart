@@ -87,6 +87,7 @@ const Login = () => {
                     id="email"
                     name="email"
                     type="email"
+                    defaultValue='zocejuw@mailinator.com'
                   />
                   <label
                     className="absolute left-0 -top-3.5 text-black text-sm 
@@ -102,7 +103,7 @@ const Login = () => {
 
                 <div className="relative">
                   <input
-                    placeholder="Password" 
+                    placeholder="Password" defaultValue="Pa$$w0rd!"
                     className="peer h-10 w-full  border-b-2 border-slate-300 text-black 
             bg-transparent placeholder-transparent focus:outline-none
              focus:border-slate-600"
