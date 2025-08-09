@@ -6,6 +6,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const Addproduct = () => {
+  
   const axiosSecure = useAxiosSecure();
 
   const { user } = useAuth();

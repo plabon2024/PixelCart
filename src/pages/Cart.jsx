@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import Swal from "sweetalert2";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Cart = () => {
@@ -23,7 +23,11 @@ const Cart = () => {
         console.log(error);
       });
   }, [user.email, axiosSecure]);
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top
+  }, [pathname]);
   const handleCancel = async (id, quantity, productId) => {
     try {
       // Delete the order

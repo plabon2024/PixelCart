@@ -26,47 +26,56 @@ const SomePorduct = () => {
 
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 justify-center items-center mb-20">
         {products.map((product) => (
-          <div key={product._id} className="flex items-center  justify-center hover:scale-105 transition-all ">
+          <div
+            key={product._id}
+            className="flex items-center  justify-center hover:scale-105 transition-all "
+          >
             <div>
-              <div className="card bg-base-100 max-w-sm shadow-xl h-[500px]">
-                <figure className="px-10 pt-10">
+              <div className="card bg-base-100 max-w-sm shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                {/* Product Image */}
+                <figure className="relative">
                   <img
                     src={product.image}
-                    alt="Shoes"
-                    className="rounded-xl h-64"
+                    alt={product.name}
+                    className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
                   />
+
+                  {/* Optional Discount Badge */}
+                  {product.discount && (
+                    <span className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                      -{product.discount}%
+                    </span>
+                  )}
                 </figure>
-                <div className="card-body items-center text-start">
-                  <div className="flex flex-col space-y-1">
-                    <h1 className="card-title text-2xl font-semibold ">
-                      {product.name}
-                    </h1>
 
+                {/* Product Details */}
+                <div className="card-body text-start space-y-2">
+                  {/* Product Name */}
+                  <h1 className="card-title text-lg font-semibold line-clamp-2 hover:text-primary transition-colors">
+                    {product.name}
+                  </h1>
 
-                    <p className="text-gray-600 text-sm">{product.category}</p>
-                    <p className="text-gray-500 text-sm">
-                      By: {product.brandname}
-                    </p>
+                  {/* Category & Brand */}
+                  <p className="text-gray-500 text-xs uppercase">
+                    {product.category}
+                  </p>
+                  <p className="text-gray-400 text-xs">
+                    By: {product.brandname}
+                  </p>
 
-                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-                      <p>
-                        Min Buy Qty:{" "}
-                        <span className="font-semibold">
-                          {product.minquantity}
-                        </span>
-                      </p>
-                    </div>
-
+                  {/* Price & Details Button */}
+                  <div className="flex justify-between items-center mt-2">
                     <p className="text-lg font-bold text-green-600">
-                      $ {product.price}
+                      ${product.price}
                     </p>
-
-                    <div className="card-actions justify-start items-start">
-                      <Link to={`/product/${product._id}`}>
-                        <button className="btn btn-ghost">Details</button>
-                      </Link>
-                    </div>
+                    <Link to={`/product/${product._id}`}>
+                      <button className="btn btn-primary btn-sm">
+                        View Details
+                      </button>
+                    </Link>
                   </div>
+
+        
                 </div>
               </div>
             </div>

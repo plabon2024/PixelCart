@@ -4,12 +4,14 @@ import ProductCategories from "./ProductCategories";
 import Faq from "./Faq";
 import SomePorduct from "./SomePorduct";
 import CustomerReviews from "./CustomerReviews";
+import { useLocation } from "react-router";
 
 const Home = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top
+  }, [pathname]);
   return (
     <div>
       <Banner></Banner>

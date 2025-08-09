@@ -15,7 +15,15 @@ const Banner = () => {
         modules={[Navigation]}
         className="w-full h-full"
       >
-        {" "}
+        {" "}    <SwiperSlide>
+          <div className="w-full h-full relative">
+            <img
+              className="w-full h-full object-cover"
+              src="/9742750.jpg"
+              alt="Banner slide 1"
+            />
+          </div>
+        </SwiperSlide>
         <SwiperSlide>
           <div className="w-full h-full relative">
             <img
@@ -31,15 +39,7 @@ const Banner = () => {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <div className="w-full h-full relative">
-            <img
-              className="w-full h-full object-cover"
-              src="/9742750.jpg"
-              alt="Banner slide 1"
-            />
-          </div>
-        </SwiperSlide>
+    
         <SwiperSlide>
           <div className="w-full h-full relative">
             <img

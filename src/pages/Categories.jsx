@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import useAuth from "../hooks/useAuth";
 import Card from "../components/Card";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -8,7 +8,11 @@ const Categories = () => {
   const axiosSecure = useAxiosSecure();
   const [products, setProducts] = useState([]);
   const { selectedCategory, setSelectedCategory } = useAuth();
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top
+  }, [pathname]);
   useEffect(() => {
     axiosSecure
       .get(`${import.meta.env.VITE_baseurl}/allproduct`)

@@ -6,12 +6,16 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import Card from "../components/Card";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import Swal from "sweetalert2";
 
 const MyProduct = () => {
   const axiosSecure = useAxiosSecure();
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top
+  }, [pathname]);
   const { user } = useAuth();
   const [data, setData] = useState(null);
   useEffect(() => {

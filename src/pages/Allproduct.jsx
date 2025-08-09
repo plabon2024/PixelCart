@@ -1,10 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import Card from "../components/Card";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Allproduct = () => {
+    const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top
+  }, [pathname]);
   const axiosSecure = useAxiosSecure();
 
   const [showAvailableOnly, setShowAvailableOnly] = useState(false);

@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { useEffect, useState } from "react";
 
 import axios from "axios";
@@ -8,7 +8,11 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Details = () => {
   const axiosSecure = useAxiosSecure();
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top
+  }, [pathname]);
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 

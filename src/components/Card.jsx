@@ -4,38 +4,38 @@ import React from "react";
 const Card = ({ product, children }) => {
   return (
     <>
-      <div className="card bg-base-100 max-w-sm shadow-sm min-h-[747px] hover:scale-105 transition-all">
+      <div className="card bg-base-100 max-w-sm shadow-sm min-h-[747px] hover:scale-105 transition-transform duration-300">
         <div className="avatar p-5">
-          <div className="w-sm rounded mx-auto">
+          <div className="w-full rounded mx-auto">
             <img
               src={product.image}
               alt={product.name}
-              className="object-cover rounded-lg"
+              className="object-cover rounded-lg w-full h-48"
             />
           </div>
         </div>
 
-        <div className="card-body text-start ">
+        <div className="card-body text-start">
           <h2 className="text-xl font-bold">{product.name}</h2>
           <p className="text-gray-600 text-sm">{product.category}</p>
           <p className="text-gray-500 text-sm">By: {product.brandname}</p>
-          <p className="text-gray-500">
-            Min Buy Qty:{" "}
-            <span>{product.minquantity}</span>
+          <p className="text-gray-500 text-sm">
+            Min Buy Qty: <span>{product.minquantity}</span>
           </p>
-          <p className="text-sm">{product.description}</p>
-          <p className="font-semibold text-green-600">${product.price}</p>
+          <p className="text-sm mt-2">{product.description}</p>
+          <p className="font-semibold text-green-600 mt-2">${product.price}</p>
 
-          <div className="flex items-center">
+          <div className="flex items-center mt-3">
             <Rating
               style={{ maxWidth: 100 }}
               value={parseInt(product.rating)}
               readOnly
             />
             <span className="ml-2 font-semibold text-yellow-600">
-              {parseInt(product.rating).toFixed(2)}
+              {parseFloat(product.rating).toFixed(2)}
             </span>
           </div>
+
           {children}
         </div>
       </div>
