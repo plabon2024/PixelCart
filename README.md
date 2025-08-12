@@ -6,6 +6,7 @@
 A modern wholesale platform web application designed to streamline buying and selling processes for wholesale products.
 
 🌐 **Live URL**: [https://wholesale-platform-c73da.web.app/](https://wholesale-platform-c73da.web.app/)
+![Screenshot](./public/wholesale-platform-c73da.web.app_.png)
 
 ---
 
